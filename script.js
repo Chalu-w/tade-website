@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileNav();
   initReaderControls();
   highlightActiveNavOnScroll();
-  initFloatingBottomButton();
 });
 
 // ==================== 1. MULTILINGUAL TRANSLATION SYSTEM ====================
@@ -739,23 +738,4 @@ function highlightActiveNavOnScroll() {
       }
     });
   });
-}
-
-// ==================== 8. FLOATING BOTTOM BIOGRAPHY BUTTON ====================
-
-function initFloatingBottomButton() {
-  const bar = document.getElementById('floatingBottomBar');
-  if (!bar) return;
-
-  const updateVisibility = () => {
-    // Reveal after scrolling past top hero (220px)
-    if (window.scrollY > 220) {
-      bar.classList.add('visible');
-    } else {
-      bar.classList.remove('visible');
-    }
-  };
-
-  window.addEventListener('scroll', updateVisibility, { passive: true });
-  updateVisibility();
 }
