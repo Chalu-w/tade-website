@@ -76,6 +76,56 @@ const TRANSLATIONS = {
       en: "Explore Biography",
       am: "የታሪክ መጽሐፉን ያንብቡ"
     },
+    btnReadBiography: {
+      om: "Seenaa Isaa Dubbisi",
+      en: "Read His Biography",
+      am: "የህይወት ታሪኩን ያንብቡ"
+    },
+    bioPageHeroBadge: {
+      om: "Seenaa Jireenyaa Guutuu & Galmee Seenaa",
+      en: "Complete Official Memorial Biography",
+      am: "ይፋዊ ሙሉ የህይወት ታሪክ እና ዲጂታል ማህደር"
+    },
+    bioPageHeroTitle: {
+      om: "SEENAA JIREENYAA TADASAA BADADAA",
+      en: "THE COMPLETE LIFE STORY OF TADASAA BADADAA",
+      am: "የታደሠ በደዳ ረጋሣ የተሟላ የህይወት ታሪክ"
+    },
+    bioPageHeroSubtitle: {
+      om: "Kitaaba Seenaa Boqonnaa 10, Suuraalee Qabatamaa, Imala Barnootaa fi Hoggansa Tajaajila Mootummaa",
+      en: "Complete 10-Chapter Biography Book, Archival Photographs, Educational Journey & Distinguished Public Leadership",
+      am: "ባለ 10 ምዕራፍ የተሟላ የታሪክ መጽሐፍ፣ እውነተኛ የፎቶ ማህደር፣ የትምህርት ጉዞ እና የላቀ የመንግሥት አመራር አገልግሎት"
+    },
+    bioPageBackBtn: {
+      om: "Gara Fuula Duraatti Deebi'aa",
+      en: "Return to Homepage",
+      am: "ወደ ዋናው ገጽ ተመለስ"
+    },
+    bioStartReadingBtn: {
+      om: "Boqonnaa 1ffaa Jalqabaa",
+      en: "Start Reading Chapters",
+      am: "ምዕራፍ 1ን ማንበብ ጀምር"
+    },
+    bioViewPhotosBtn: {
+      om: "Suuraalee Ilaalaa",
+      en: "View Photo Archive",
+      am: "የፎቶ ማህደሩን ተመልከት"
+    },
+    bottomBioPill: {
+      om: "Galmee Seenaa Guutuu",
+      en: "Complete Memorial Archive",
+      am: "የተሟላ የታሪክ ማህደር"
+    },
+    bottomBioTitle: {
+      om: "SEENAA JIREENYAA GUUTUU DUBBISI",
+      en: "READ THE COMPLETE BIOGRAPHY",
+      am: "የተሟላውን የህይወት ታሪክ ያንብቡ"
+    },
+    bottomBioSubtitle: {
+      om: "Seenaa jireenyaa qabatamaa, boqonnaalee 10, suuraalee, imala barnootaa fi milkaa'ina isaanii guutuu asitti argattu.",
+      en: "Discover his full life story across 10 chapters, educational pathway, archival photographs, and lifetime achievements.",
+      am: "ባለ 10 ምዕራፍ የተሟላ የህይወት ታሪካቸውን፣ የትምህርት ጉዟቸውን፣ የፎቶ ማህደራቸውን እና የስኬት ውጤቶቻቸውን እዚህ ያግኙ።"
+    },
     btnWatchVideo: {
       om: "Viidiyoo Ilaalaa",
       en: "Watch Featured Video",

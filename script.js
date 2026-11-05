@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileNav();
   initReaderControls();
   highlightActiveNavOnScroll();
+  initFloatingBottomButton();
 });
 
 // ==================== 1. MULTILINGUAL TRANSLATION SYSTEM ====================
@@ -29,8 +30,11 @@ function setLanguage(lang) {
     // localStorage might be disabled in private mode
   }
 
-  // Update HTML lang attribute
+  // Update HTML and body lang attribute
   document.documentElement.lang = lang;
+  if (document.body) {
+    document.body.setAttribute('lang', lang);
+  }
 
   // Update switcher buttons UI
   const btnOm = document.getElementById('langBtnOm') || document.getElementById('omBtn');
@@ -66,21 +70,28 @@ function setLanguage(lang) {
     '#videos': ui.navVideos
   };
 
-  document.querySelectorAll('.nav-links a').forEach(link => {
+  const updateNavLinkText = link => {
     const href = link.getAttribute('href');
+    if (!href) return;
     if (navMap[href]) {
       link.textContent = navMap[href][lang];
+    } else if (href === 'index.html' || href === 'index.html#home') {
+      link.textContent = ui.navHome[lang];
+    } else if (href === 'index.html#connect') {
+      link.textContent = ui.navConnect[lang];
+    } else if (href === 'index.html#videos') {
+      link.textContent = ui.navVideos[lang];
+    } else if (href === 'biography.html') {
+      if (ui.btnReadBiography) {
+        link.textContent = ui.btnReadBiography[lang];
+      }
     }
-  });
+  };
 
-  document.querySelectorAll('.footer-links a').forEach(link => {
-    const href = link.getAttribute('href');
-    if (navMap[href]) {
-      link.textContent = navMap[href][lang];
-    }
-  });
+  document.querySelectorAll('.nav-links a').forEach(updateNavLinkText);
+  document.querySelectorAll('.footer-links a').forEach(updateNavLinkText);
 
-  // 2. Hero Section
+  // 2. Hero Section & Biography Entry Buttons
   const heroBadge = document.querySelector('.hero-section .gold-badge');
   if (heroBadge && ui.heroBadge) heroBadge.textContent = ui.heroBadge[lang];
 
@@ -90,6 +101,13 @@ function setLanguage(lang) {
   const heroDesc = document.querySelector('.hero-description');
   if (heroDesc && ui.heroDesc) heroDesc.textContent = ui.heroDesc[lang];
 
+  // Biography Entry Button Text (OM: Seenaa Isaa Dubbisi | EN: Read His Biography | AM: የህይወት ታሪኩን ያንብቡ)
+  document.querySelectorAll('.btn-biography-entry .bio-btn-text, .bio-btn-text').forEach(el => {
+    if (ui.btnReadBiography && ui.btnReadBiography[lang]) {
+      el.textContent = ui.btnReadBiography[lang];
+    }
+  });
+
   const btnExplore = document.querySelector('.hero-cta-group a[href="#biography"] span:first-child');
   if (btnExplore && ui.btnExploreBio) btnExplore.textContent = ui.btnExploreBio[lang];
 
@@ -98,6 +116,25 @@ function setLanguage(lang) {
 
   const btnJourney = document.querySelector('.hero-cta-group a[href="#timeline"] span:first-child');
   if (btnJourney && ui.btnDiscoverJourney) btnJourney.textContent = ui.btnDiscoverJourney[lang];
+
+  // Dedicated Biography Page Banner / Hero (if present)
+  const bioHeroBadge = document.querySelector('.bio-page-hero .gold-badge');
+  if (bioHeroBadge && ui.bioPageHeroBadge) bioHeroBadge.textContent = ui.bioPageHeroBadge[lang];
+
+  const bioHeroTitle = document.querySelector('.bio-page-hero .hero-title .gold-gradient-text');
+  if (bioHeroTitle && ui.bioPageHeroTitle) bioHeroTitle.textContent = ui.bioPageHeroTitle[lang];
+
+  const bioHeroSubtitle = document.querySelector('.bio-page-hero .hero-subtitle');
+  if (bioHeroSubtitle && ui.bioPageHeroSubtitle) bioHeroSubtitle.textContent = ui.bioPageHeroSubtitle[lang];
+
+  const bioBackBtnText = document.querySelector('.btn-back-home .btn-label');
+  if (bioBackBtnText && ui.bioPageBackBtn) bioBackBtnText.textContent = ui.bioPageBackBtn[lang];
+
+  const bioStartReadingText = document.querySelector('.btn-start-reading .btn-label');
+  if (bioStartReadingText && ui.bioStartReadingBtn) bioStartReadingText.textContent = ui.bioStartReadingBtn[lang];
+
+  const bioViewPhotosText = document.querySelector('.btn-view-photos .btn-label');
+  if (bioViewPhotosText && ui.bioViewPhotosBtn) bioViewPhotosText.textContent = ui.bioViewPhotosBtn[lang];
 
   const heroQuote = document.querySelector('.hero-quote-snippet p');
   if (heroQuote && ui.heroQuote) heroQuote.textContent = ui.heroQuote[lang];
@@ -288,6 +325,16 @@ function setLanguage(lang) {
 
   const addVideoBtnSpan = document.querySelector('#addVideoBtn span');
   if (addVideoBtnSpan && ui.adminBtn) addVideoBtnSpan.textContent = ui.adminBtn[lang];
+
+  // Bottom Biography Section (if present)
+  const bottomBioPill = document.querySelector('.bottom-biography-cta-section .gold-pill');
+  if (bottomBioPill && ui.bottomBioPill) bottomBioPill.textContent = ui.bottomBioPill[lang];
+
+  const bottomBioTitle = document.querySelector('.bottom-biography-cta-section .section-title');
+  if (bottomBioTitle && ui.bottomBioTitle) bottomBioTitle.textContent = ui.bottomBioTitle[lang];
+
+  const bottomBioSubtitle = document.querySelector('.bottom-biography-cta-section .section-subtitle');
+  if (bottomBioSubtitle && ui.bottomBioSubtitle) bottomBioSubtitle.textContent = ui.bottomBioSubtitle[lang];
 
   // 11. Footer
   const footerTagline = document.querySelector('.site-footer .footer-brand p');
@@ -685,8 +732,30 @@ function highlightActiveNavOnScroll() {
     });
 
     navItems.forEach(item => {
-      const href = item.getAttribute('href').replace('#', '');
-      item.classList.toggle('active', href === currentId);
+      const rawHref = item.getAttribute('href') || '';
+      if (rawHref.startsWith('#')) {
+        const href = rawHref.substring(1);
+        item.classList.toggle('active', href === currentId);
+      }
     });
   });
+}
+
+// ==================== 8. FLOATING BOTTOM BIOGRAPHY BUTTON ====================
+
+function initFloatingBottomButton() {
+  const bar = document.getElementById('floatingBottomBar');
+  if (!bar) return;
+
+  const updateVisibility = () => {
+    // Reveal after scrolling past top hero (220px)
+    if (window.scrollY > 220) {
+      bar.classList.add('visible');
+    } else {
+      bar.classList.remove('visible');
+    }
+  };
+
+  window.addEventListener('scroll', updateVisibility, { passive: true });
+  updateVisibility();
 }
