@@ -135,6 +135,13 @@ function setLanguage(lang) {
   const bioViewPhotosText = document.querySelector('.btn-view-photos .btn-label');
   if (bioViewPhotosText && ui.bioViewPhotosBtn) bioViewPhotosText.textContent = ui.bioViewPhotosBtn[lang];
 
+  // Embedded badada.vercel.app Toolbar
+  const badadaTag = document.querySelector('.toolbar-tag');
+  if (badadaTag && ui.badadaEmbedTag) badadaTag.textContent = ui.badadaEmbedTag[lang];
+
+  const badadaFsBtn = document.querySelector('.toolbar-action-btn span:first-child');
+  if (badadaFsBtn && ui.badadaOpenFullscreen) badadaFsBtn.textContent = ui.badadaOpenFullscreen[lang];
+
   const heroQuote = document.querySelector('.hero-quote-snippet p');
   if (heroQuote && ui.heroQuote) heroQuote.textContent = ui.heroQuote[lang];
 

@@ -111,6 +111,16 @@ const TRANSLATIONS = {
       en: "View Photo Archive",
       am: "የፎቶ ማህደሩን ተመልከት"
     },
+    badadaEmbedTag: {
+      om: "SEENAA JIREENYAA OBBO BADHAADHAA RAGGAASAA WAYYEESSAA",
+      en: "OBBO BADHAADHAA RAGGAASAA WAYYEESSAA – MEMORIAL BIOGRAPHY",
+      am: "የክቡር አቶ በደዳ ረጋሣ ወዬሳ የህይወት ታሪክ እና መታሰቢያ"
+    },
+    badadaOpenFullscreen: {
+      om: "Bal'isii Ilaali",
+      en: "Open Fullscreen",
+      am: "በሙሉ ገጽ ይመልከቱ"
+    },
     bottomBioPill: {
       om: "Galmee Seenaa Guutuu",
       en: "Complete Memorial Archive",

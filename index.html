@@ -52,12 +52,6 @@
       </div>
 
       <div class="nav-actions">
-        <!-- Top Biography Entry Button (Gara Gubbatti) -->
-        <a href="biography.html" class="btn btn-gold btn-biography-entry nav-top-bio-btn" title="Read His Biography">
-          <span class="bio-btn-icon">📖</span>
-          <span class="bio-btn-text" data-en="Read His Biography" data-om="Seenaa Isaa Dubbisi" data-am="የህይወት ታሪኩን ያንብቡ">Seenaa Isaa Dubbisi</span>
-        </a>
-
         <!-- Language Switcher -->
         <div class="lang-switch-box" role="group" aria-label="Language Selector">
           <button id="langBtnOm" class="lang-btn active" onclick="setLanguage('om')" title="Afaan Oromoo">
@@ -105,7 +99,7 @@
           </p>
 
           <div class="hero-cta-group">
-            <a href="biography.html" class="btn btn-gold btn-biography-entry" id="heroBioEntryBtn" title="Read His Biography">
+            <a href="#biography" class="btn btn-gold btn-biography-entry" id="heroBioEntryBtn" title="Read His Biography">
               <span class="bio-btn-icon">📖</span>
               <span class="bio-btn-text" data-en="Read His Biography" data-om="Seenaa Isaa Dubbisi" data-am="የህይወት ታሪኩን ያንብቡ">Seenaa Isaa Dubbisi</span>
               <span class="btn-arrow">→</span>
@@ -263,15 +257,38 @@
             data-om="Seenaa jireenyaa qabatamaa, gabaabaatti osoo hin kutamin guutummaatti akka kitaabaatti qindaa'e.">
             Seenaa jireenyaa qabatamaa, gabaabaatti osoo hin kutamin guutummaatti akka kitaabaatti qindaa'e.
           </p>
-          <div class="bio-entry-banner">
-            <a href="biography.html" class="btn btn-gold btn-biography-entry" title="Read His Biography">
-              <span class="bio-btn-icon">📖</span>
-              <span class="bio-btn-text" data-en="Read His Biography" data-om="Seenaa Isaa Dubbisi" data-am="የህይወት ታሪኩን ያንብቡ">Seenaa Isaa Dubbisi</span>
-              <span class="btn-arrow">→</span>
-            </a>
+        <!-- EMBEDDED MEMORIAL BIOGRAPHY (badada.vercel.app) -->
+        <div class="badada-embedded-card" id="badadaReader">
+          <div class="badada-card-toolbar">
+            <div class="toolbar-left">
+              <span class="pulse-dot"></span>
+              <span class="toolbar-domain">badada.vercel.app</span>
+              <span class="toolbar-divider">|</span>
+              <span class="toolbar-tag" 
+                data-en="BADHAADHAA RAGGAASAA WAYYEESSAA – MEMORIAL BIOGRAPHY" 
+                data-om="SEENAA JIREENYAA OBBO BADHAADHAA RAGGAASAA WAYYEESSAA">
+                SEENAA JIREENYAA OBBO BADHAADHAA RAGGAASAA WAYYEESSAA
+              </span>
+            </div>
+            <div class="toolbar-right">
+              <a href="https://badada.vercel.app" target="_blank" rel="noopener noreferrer" class="toolbar-action-btn" title="Open full screen in a new tab">
+                <span data-en="Open Fullscreen" data-om="Bal'isii Ilaali">Bal'isii Ilaali</span>
+                <span class="ext-icon">↗</span>
+              </a>
+            </div>
           </div>
-          <div class="gold-divider"></div>
+          <div class="badada-iframe-wrapper">
+            <iframe 
+              src="https://badada.vercel.app" 
+              title="Official Memorial Biography of Obbo Badhaadhaa Raggaasaa Wayyeessaa" 
+              class="badada-bio-iframe"
+              loading="lazy"
+              allow="fullscreen">
+            </iframe>
+          </div>
         </div>
+        <div class="gold-divider"></div>
+      </div>
 
         <!-- Book Reader Shell -->
         <div class="book-container">
